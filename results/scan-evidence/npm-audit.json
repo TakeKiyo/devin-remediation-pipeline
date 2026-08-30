@@ -1,0 +1,349 @@
+{
+  "auditReportVersion": 2,
+  "vulnerabilities": {
+    "@deck.gl/geo-layers": {
+      "name": "@deck.gl/geo-layers",
+      "severity": "high",
+      "isDirect": true,
+      "via": [
+        "@deck.gl/mesh-layers",
+        "@loaders.gl/3d-tiles",
+        "@luma.gl/gltf"
+      ],
+      "effects": [],
+      "range": ">=8.6.6",
+      "nodes": [
+        "node_modules/@deck.gl/geo-layers"
+      ],
+      "fixAvailable": {
+        "name": "@deck.gl/geo-layers",
+        "version": "8.9.36",
+        "isSemVerMajor": true
+      }
+    },
+    "@deck.gl/mesh-layers": {
+      "name": "@deck.gl/mesh-layers",
+      "severity": "high",
+      "isDirect": true,
+      "via": [
+        "@loaders.gl/gltf",
+        "@luma.gl/gltf"
+      ],
+      "effects": [],
+      "range": ">=8.6.6",
+      "nodes": [
+        "node_modules/@deck.gl/mesh-layers"
+      ],
+      "fixAvailable": {
+        "name": "@deck.gl/mesh-layers",
+        "version": "8.6.5",
+        "isSemVerMajor": true
+      }
+    },
+    "@loaders.gl/3d-tiles": {
+      "name": "@loaders.gl/3d-tiles",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "@loaders.gl/gltf"
+      ],
+      "effects": [
+        "@deck.gl/geo-layers"
+      ],
+      "range": ">=3.1.0-alpha.1",
+      "nodes": [
+        "node_modules/@loaders.gl/3d-tiles"
+      ],
+      "fixAvailable": {
+        "name": "@deck.gl/geo-layers",
+        "version": "8.9.36",
+        "isSemVerMajor": true
+      }
+    },
+    "@loaders.gl/gltf": {
+      "name": "@loaders.gl/gltf",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "@loaders.gl/textures"
+      ],
+      "effects": [
+        "@deck.gl/mesh-layers",
+        "@loaders.gl/3d-tiles",
+        "@luma.gl/gltf"
+      ],
+      "range": ">=3.1.0-alpha.1",
+      "nodes": [
+        "node_modules/@loaders.gl/gltf"
+      ],
+      "fixAvailable": {
+        "name": "@deck.gl/mesh-layers",
+        "version": "8.6.5",
+        "isSemVerMajor": true
+      }
+    },
+    "@loaders.gl/textures": {
+      "name": "@loaders.gl/textures",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "texture-compressor"
+      ],
+      "effects": [
+        "@loaders.gl/gltf",
+        "@luma.gl/gltf"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/@loaders.gl/textures"
+      ],
+      "fixAvailable": {
+        "name": "@deck.gl/mesh-layers",
+        "version": "8.6.5",
+        "isSemVerMajor": true
+      }
+    },
+    "@luma.gl/gltf": {
+      "name": "@luma.gl/gltf",
+      "severity": "high",
+      "isDirect": true,
+      "via": [
+        "@loaders.gl/gltf",
+        "@loaders.gl/textures"
+      ],
+      "effects": [
+        "@deck.gl/geo-layers",
+        "@deck.gl/mesh-layers"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/@luma.gl/gltf"
+      ],
+      "fixAvailable": {
+        "name": "@deck.gl/mesh-layers",
+        "version": "8.6.5",
+        "isSemVerMajor": true
+      }
+    },
+    "brace-expansion": {
+      "name": "brace-expansion",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1130734,
+          "name": "brace-expansion",
+          "dependency": "brace-expansion",
+          "title": "brace-expansion: DoS via unbounded intermediate arrays, bypassing the CVE-2026-14257 mitigation",
+          "url": "https://github.com/advisories/GHSA-rgw5-rvv9-x895",
+          "severity": "high",
+          "cwe": [
+            "CWE-400",
+            "CWE-770"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": ">=4.0.0 <5.0.9"
+        }
+      ],
+      "effects": [
+        "nx"
+      ],
+      "range": "4.0.0 - 5.0.8",
+      "nodes": [
+        "node_modules/nx/node_modules/brace-expansion"
+      ],
+      "fixAvailable": true
+    },
+    "eslint-plugin-i18n-strings": {
+      "name": "eslint-plugin-i18n-strings",
+      "severity": "critical",
+      "isDirect": true,
+      "via": [
+        {
+          "source": 1105139,
+          "name": "eslint-plugin-i18n-strings",
+          "dependency": "eslint-plugin-i18n-strings",
+          "title": "Malware in eslint-plugin-i18n-strings",
+          "url": "https://github.com/advisories/GHSA-55h3-fm53-wq99",
+          "severity": "critical",
+          "cwe": [
+            "CWE-506"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": ">=0"
+        }
+      ],
+      "effects": [],
+      "range": "*",
+      "nodes": [
+        "eslint-rules/eslint-plugin-i18n-strings",
+        "node_modules/eslint-plugin-i18n-strings"
+      ],
+      "fixAvailable": false
+    },
+    "image-size": {
+      "name": "image-size",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1138808,
+          "name": "image-size",
+          "dependency": "image-size",
+          "title": "image-size: ICNS parser allows denial of service through an infinite loop",
+          "url": "https://github.com/advisories/GHSA-w3rx-r6r6-pgpr",
+          "severity": "high",
+          "cwe": [
+            "CWE-835"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": "<=2.0.2"
+        },
+        {
+          "source": 1138809,
+          "name": "image-size",
+          "dependency": "image-size",
+          "title": "image-size: JXL and HEIF parsers allow denial of service through infinite loops",
+          "url": "https://github.com/advisories/GHSA-5p2g-fcmc-qvqq",
+          "severity": "high",
+          "cwe": [
+            "CWE-835"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": "<=2.0.2"
+        }
+      ],
+      "effects": [
+        "texture-compressor"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/image-size"
+      ],
+      "fixAvailable": {
+        "name": "@deck.gl/mesh-layers",
+        "version": "8.6.5",
+        "isSemVerMajor": true
+      }
+    },
+    "lerna": {
+      "name": "lerna",
+      "severity": "high",
+      "isDirect": true,
+      "via": [
+        "pacote"
+      ],
+      "effects": [],
+      "range": "6.3.1-beta.0 - 6.3.1-beta.4 || >=6.4.2-beta.0",
+      "nodes": [
+        "node_modules/lerna"
+      ],
+      "fixAvailable": {
+        "name": "lerna",
+        "version": "6.4.1",
+        "isSemVerMajor": true
+      }
+    },
+    "nx": {
+      "name": "nx",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "brace-expansion"
+      ],
+      "effects": [],
+      "range": "22.7.0-beta.0 - 23.1.1 || 23.2.0-beta.0 - 23.2.0-canary.20260804-c3b7f1e",
+      "nodes": [
+        "node_modules/nx"
+      ],
+      "fixAvailable": true
+    },
+    "pacote": {
+      "name": "pacote",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1146559,
+          "name": "pacote",
+          "dependency": "pacote",
+          "title": "pacote is vulnerable to Denial of Service (DoS) via the addGitSha function",
+          "url": "https://github.com/advisories/GHSA-w4pp-8pjf-rmxw",
+          "severity": "high",
+          "cwe": [
+            "CWE-400",
+            "CWE-1333"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": ">=11.2.7 <21.5.1"
+        }
+      ],
+      "effects": [
+        "lerna"
+      ],
+      "range": "11.2.7 - 21.5.0",
+      "nodes": [
+        "node_modules/@npmcli/arborist/node_modules/pacote",
+        "node_modules/pacote"
+      ],
+      "fixAvailable": {
+        "name": "lerna",
+        "version": "6.4.1",
+        "isSemVerMajor": true
+      }
+    },
+    "texture-compressor": {
+      "name": "texture-compressor",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "image-size"
+      ],
+      "effects": [
+        "@loaders.gl/textures"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/texture-compressor"
+      ],
+      "fixAvailable": {
+        "name": "@deck.gl/mesh-layers",
+        "version": "8.6.5",
+        "isSemVerMajor": true
+      }
+    }
+  },
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 12,
+      "critical": 1,
+      "total": 13
+    },
+    "dependencies": {
+      "prod": 1298,
+      "dev": 1847,
+      "optional": 190,
+      "peer": 20,
+      "peerOptional": 0,
+      "total": 3197
+    }
+  }
+}

@@ -1,0 +1,54 @@
+Downloading ruff (9.4MiB)
+ Downloaded ruff
+Installed 1 package in 167ms
+S704 Unsafe use of `markupsafe.Markup` detected
+   --> superset/models/dashboard.py:296:16
+    |
+294 |             url_for("Superset.dashboard", dashboard_id_or_slug=self.slug or self.id)
+295 |         )
+296 |         return Markup(f'<a href="{href}">{title}</a>')
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+297 |
+298 |     @property
+    |
+
+S704 Unsafe use of `markupsafe.Markup` detected
+   --> superset/models/slice.py:364:16
+    |
+362 |         # relative so frontend callers can apply ensureAppRoot exactly once.
+363 |         href = url_for("ExploreView.root", slice_id=self.id)
+364 |         return Markup(f'<a href="{href}">{name}</a>')
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+365 |
+366 |     @property
+    |
+
+S704 Unsafe use of `markupsafe.Markup` detected
+   --> superset/models/sql_lab.py:556:16
+    |
+554 |       @property
+555 |       def pop_tab_link(self) -> Markup:
+556 |           return Markup(
+    |  ________________^
+557 | |             f"""
+558 | |             <a href="/sqllab?savedQueryId={self.id}">
+559 | |                 <i class="fa fa-link"></i>
+560 | |             </a>
+561 | |         """
+562 | |         )
+    | |_________^
+563 |
+564 |       @property
+    |
+
+S704 Unsafe use of `markupsafe.Markup` detected
+   --> superset/utils/core.py:609:16
+    |
+607 |     safe = nh3.clean(safe, tags=safe_markdown_tags, attributes=safe_markdown_attrs)
+608 |     if markup_wrap:
+609 |         safe = Markup(safe)
+    |                ^^^^^^^^^^^^
+610 |     return safe
+    |
+
+Found 4 errors.
