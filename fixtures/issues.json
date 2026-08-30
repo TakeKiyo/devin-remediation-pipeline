@@ -1,0 +1,26 @@
+[
+  {
+    "number": 1,
+    "title": "Upgrade dompurify to >=3.4.13 to fix XSS advisory GHSA-55q2-fjhq-7xh7",
+    "html_url": "https://github.com/demo-user/superset/issues/1",
+    "user": { "login": "demo-user" },
+    "labels": [{ "name": "devin-fix" }],
+    "body": "## Summary\nnpm audit reports a moderate XSS advisory for dompurify (<=3.4.12): GHSA-55q2-fjhq-7xh7. The lockfile resolves dompurify to 3.4.12.\n\n## Expected fix\nBump the root superset-frontend/package.json constraint to ^3.4.13 and refresh package-lock.json.\n\n## Acceptance criteria\n- npm audit no longer reports GHSA-55q2-fjhq-7xh7\n- lockfile resolves dompurify >=3.4.13\n"
+  },
+  {
+    "number": 2,
+    "title": "Eliminate ruff S704 findings while preserving existing HTML escaping",
+    "html_url": "https://github.com/demo-user/superset/issues/2",
+    "user": { "login": "demo-user" },
+    "labels": [{ "name": "devin-fix" }],
+    "body": "## Summary\nruff check superset/ reports 4 instances of S704 (unsafe-markup-use). The interpolated values are already escaped, sanitized, generated from constrained values, or integer-typed depending on the site, so this is a hardening issue rather than a demonstrated vulnerability.\n\n## Acceptance criteria\n- ruff check superset/ reports no S704 violations, or each remaining site carries a justified suppression\n- a regression test proves hostile input still renders escaped\n"
+  },
+  {
+    "number": 3,
+    "title": "Scope the local ESLint plugin to eliminate an npm-audit name collision",
+    "html_url": "https://github.com/demo-user/superset/issues/3",
+    "user": { "login": "demo-user" },
+    "labels": [{ "name": "devin-fix" }],
+    "body": "## Summary\nnpm audit reports a CRITICAL malware advisory for eslint-plugin-i18n-strings, but our package of that name is a local workspace package, so the registry package is never loaded. The alert is a name-based false positive worth fixing for audit hygiene.\n\n## Acceptance criteria\n- npm audit no longer reports GHSA-55h3-fm53-wq99\n- the plugin still loads: npx eslint --config eslint.config.minimal.js --no-inline-config --format json src\n"
+  }
+]
