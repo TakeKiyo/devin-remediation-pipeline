@@ -1,0 +1,21 @@
+services:
+  orchestrator:
+    build: .
+    # Values come from .env when present (Compose reads it automatically) and
+    # fall back to simulate-mode defaults otherwise, so `docker compose up`
+    # works with no credentials and no .env file at all.
+    environment:
+      SIMULATE: ${SIMULATE:-true}
+      DEVIN_API_KEY: ${DEVIN_API_KEY:-}
+      DEVIN_ORG_ID: ${DEVIN_ORG_ID:-}
+      GITHUB_TOKEN: ${GITHUB_TOKEN:-}
+      REPO_FULL_NAME: ${REPO_FULL_NAME:-demo-user/superset}
+      DEFAULT_BRANCH: ${DEFAULT_BRANCH:-master}
+      TRIGGER_LABEL: ${TRIGGER_LABEL:-devin-fix}
+      POLL_INTERVAL_SEC: ${POLL_INTERVAL_SEC:-30}
+      SESSION_TIMEOUT_MIN: ${SESSION_TIMEOUT_MIN:-45}
+      MAX_ACU_LIMIT: ${MAX_ACU_LIMIT:-10}
+      MAX_CONCURRENT_SESSIONS: ${MAX_CONCURRENT_SESSIONS:-3}
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
