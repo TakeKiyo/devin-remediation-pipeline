@@ -198,9 +198,8 @@ Scope choices for a working end-to-end demo, not oversights:
 - **Durable delivery**: an outbox for comments and a session id recorded before
   the create call, closing the two best-effort gaps above.
 - **Richer telemetry**: structured event log, run ids, lead-time percentiles.
-- **A real budget**: this needs a cost signal the API actually populates. On
-  credit-based plans `acus_consumed` comes back as 0 and spend is only visible in
-  Devin's billing view, so a budget gate would have to read that — and reserve
-  in-flight cost rather than counting what is already spent.
+- **A real budget**: spend is only visible in Devin's billing view, not the API,
+  so a budget gate would have to read it from there — and reserve in-flight cost
+  rather than counting what is already spent.
 - **Retries with attempt tracking**, a **webhook trigger**, Slack notifications,
   and a trusted-author allowlist for issue sources.
