@@ -168,6 +168,12 @@ enough to `cat` and written atomically.
 
 ## Real-run results
 
+[`results/issue-selection.md`](results/issue-selection.md) records the decision
+the pipeline does not make: why these three issues and not the rest of what the
+scanners reported, and the Ask Devin triage that ranked them — including the hole it
+found in the acceptance criteria, and the one thing it got wrong. Raw scanner
+output is in [`results/scan-evidence/`](results/scan-evidence/).
+
 `results/report.md` holds the snapshot of the live run; every pull request and
 session link in it is real. `results/verification.md` records the independent
 check of each pull request — the commands re-run by hand, and their output.
@@ -191,15 +197,21 @@ Scope choices for a working end-to-end demo, not oversights:
 
 ## Production extensions
 
-- **Close the detection loop**: a scheduled scanner (`pip-audit`, `npm audit`)
-  filing issues automatically. Nothing else changes.
-- **Independent verification**: merge CI check-run results into the signals, or
-  run a verifier job that re-runs the scanner on the PR branch.
-- **Durable delivery**: an outbox for comments and a session id recorded before
-  the create call, closing the two best-effort gaps above.
-- **Richer telemetry**: structured event log, run ids, lead-time percentiles.
-- **A real budget**: spend is only visible in Devin's billing view, not the API,
-  so a budget gate would have to read it from there — and reserve in-flight cost
-  rather than counting what is already spent.
-- **Retries with attempt tracking**, a **webhook trigger**, Slack notifications,
-  and a trusted-author allowlist for issue sources.
+In priority order:
+
+1. **Independent verification.** The agent's own check is currently the only
+   check, which is why the report calls it self-reported. Merging CI check-run
+   results into the signals — or a verifier job that re-runs the scanner on the
+   PR branch — makes `succeeded` mean a green build.
+2. **Close the detection loop.** A scheduled scanner (`pip-audit`, `npm audit`)
+   filing the issues automatically. Nothing else changes.
+3. **The controls for running it unattended.** Slack notifications, per-repo
+   policy, and retries with attempt tracking. Plus a real budget: spend is only
+   visible in Devin's billing view, not the API, so a budget gate has to read it
+   from there — and reserve in-flight cost rather than count what is already
+   spent.
+
+Then: **durable delivery** (an outbox for comments, and a session id recorded
+before the create call, closing the two best-effort gaps above), a **webhook
+trigger**, **richer telemetry** (structured event log, run ids, lead-time
+percentiles), and a trusted-author allowlist for issue sources.
